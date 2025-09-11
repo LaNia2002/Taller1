@@ -14,10 +14,11 @@ class alumno{
         int anoIngreso;
         
     public:
-        alumno(int, string, string, int, int, int);
+        alumno(int, string, string,string, int, int, int);
         int getID();
         string getNombre();
         string getApellido();
+        string getCarrera();
         int getDiaIngreso();
         int getMesIngreso();
         int getAnoIngreso();
