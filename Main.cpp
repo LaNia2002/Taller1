@@ -50,6 +50,10 @@ int main() {
         imprimirMenu();
         int opcion;
         std::cin >> opcion;
+		while (opcion > 5 || opcion < 1) {
+       		std::cout << "Ingrese un numero valido: " << std::endl;
+       	 	std::cin >> opcion;
+    	}
         if (opcion == 1){
             menu = gestion();
         }
