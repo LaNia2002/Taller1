@@ -1,4 +1,6 @@
 #include <iostream>
+#include "alumno.h"
+#include "curso.h"
 
 void imprimirMenu(){
     std::cout << "Bienvenido al menu: principal." << std::endl;
