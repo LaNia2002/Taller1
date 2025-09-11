@@ -55,6 +55,39 @@ void registrarAlumno(){
     std::cout<<"El alumno ha sido registrado exitosamente."<<std::endl;
 }
 
+void eliminarCurso(){
+    
+}
+void buscarCurso() {
+
+}
+void registrarCurso(){
+
+    std:: string codigo;
+    std:: string nombre;
+    int cantMax;
+    std:: string carrera;
+    std:: string profesor;
+
+    std::cout <<"Ingrese el codigo del curso:" << std::endl;
+    std::cin >>codigo;
+    std::cout<<" Ingrese el nombre del curso:" <<std::endl;
+    std::cin>>nombre;
+    std:: cout<<"Ingrese la cantidad maxima de estudiantes del curso:" <<std::endl;
+    std::cin>>cantMax;
+    while (cantMax < 0){
+        std::cout << "Ingrese una cantidad valida: " << std::endl;
+        std::cin >> cantMax;}
+    std::cout<<"Ingrese la carrera del curso:" <<std::endl;
+    std::cin>>carrera;
+    std::cout<<"Ingrese el nombre del profesor del curso:" <<std::endl;
+    std::cin>>profesor;
+
+    curso* clase = new curso(codigo, nombre, cantMax, carrera, profesor);
+    std::cout<<"El curso ha sido registrado exitosamente."<<std::endl;
+    
+}
+
 bool gestion() {
     int opcion;
     std::cout << "Ingrese qué tipo de gestion quiere hacer: " << std::endl;
@@ -80,6 +113,62 @@ bool gestion() {
     return true;
 }
 
+bool gestionCursos(){
+    int opcion;
+    std::cout << "Ingrese qué tipo de gestion quiere hacer: " << std::endl;
+    std::cout << "1) Registro de curso: " << std::endl;
+    std::cout << "2) Buscar un curso: " << std::endl;
+    std::cout << "3) Eliminar un curso: " << std::endl;
+    std::cout << "4) Volver al menú: " << std::endl;
+    std::cin >> opcion;
+    while (opcion > 4 || opcion < 1){
+        std::cout << "Ingrese un numero valido: " << std::endl;
+        std::cin >> opcion;
+    }
+    if(opcion == 1){
+        registrarCurso();
+    }
+    else if (opcion == 2){
+        buscarCurso();
+
+    } 
+    else if (opcion == 3) {
+        eliminarCurso();
+
+    } else if (opcion == 4){
+        return true;
+    }
+    return true;
+}
+
+bool gestionCursos(){
+    int opcion;
+    std::cout << "Ingrese qué tipo de gestion quiere hacer: " << std::endl;
+    std::cout << "1) Registro de curso: " << std::endl;
+    std::cout << "2) Buscar un curso: " << std::endl;
+    std::cout << "3) Eliminar un curso: " << std::endl;
+    std::cout << "4) Volver al menú: " << std::endl;
+    std::cin >> opcion;
+    while (opcion > 4 || opcion < 1){
+        std::cout << "Ingrese un numero valido: " << std::endl;
+        std::cin >> opcion;
+    }
+    if(opcion == 1){
+        registrarCurso();
+    }
+    else if (opcion == 2){
+        buscarCurso();
+
+    } 
+    else if (opcion == 3) {
+        eliminarCurso();
+
+    } else if (opcion == 4){
+        return true;
+    }
+    return true;
+}
+
 int main() {
     bool menu = true;
     while (menu){
@@ -92,6 +181,18 @@ int main() {
     	}
         if (opcion == 1){
             menu = gestion();
+        }
+		else if (opcion == 2){
+            menu=gestionCursos();
+        }
+        else if (opcion == 3){
+            
+        }
+        else if (opcion == 4){
+            
+        }
+        else if (opcion == 5){
+            
         }
     }
 	return 0;
