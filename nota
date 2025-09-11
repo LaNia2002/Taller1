@@ -1,0 +1,14 @@
+using namespace std;
+#include <iostream>
+#pragma once
+
+class nota {
+  public:
+    int data; 
+    nota* sig; 
+
+    nota(int data) {
+        this -> data = data;
+        this -> sig = nullptr;
+    }
+};
