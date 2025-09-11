@@ -17,6 +17,42 @@ void buscarAlumno() {
     
 }
 void registrarAlumno(){
+	int id;
+    std:: string nombre;
+    std:: string apellido;
+    std:: string carrera;
+    int diaIngreso;
+    int mesIngreso;
+    int anoIngreso;
+
+    std::cout <<"Ingrese el ID del alumno:" << std::endl;
+    std::cin >>id;
+    std::cout<<" Ingrese el nombre del alumno:" <<std::endl;
+    std::cin>>nombre;
+    std:: cout<<"Ingrese el apellido del alumno:" <<std::endl;
+    std::cin>>apellido;
+    std::cout<<"Ingrese la carrera del alumno:" <<std::endl;
+    std::cin>>carrera;
+    std::cout<<"Ingrese el dia de ingreso del alumno:" <<std::endl;
+    std::cin>>diaIngreso;
+    while (diaIngreso> 31 || diaIngreso < 1){
+        std::cout << "Ingrese un dia valido: " << std::endl;
+        std::cin >> diaIngreso;
+    }
+    std::cout<<"Ingrese el mes de ingreso del alumno:" <<std::endl;
+    std::cin>>mesIngreso;
+    while (mesIngreso> 12 || mesIngreso < 1){
+        std::cout << "Ingrese un mes valido: " << std::endl;
+        std::cin >> mesIngreso;
+    }
+    std::cout<<"Ingrese el ano de ingreso del alumno: "<<std::endl;
+    std::cin>>anoIngreso;
+    while (anoIngreso> 2025 || anoIngreso < 1900){
+        std::cout << "Ingrese un ano valido: " << std::endl;
+        std::cin >> anoIngreso;
+    }
+    alumno* persona = new alumno(id, nombre, apellido, carrera, diaIngreso, mesIngreso, anoIngreso);
+    std::cout<<"El alumno ha sido registrado exitosamente."<<std::endl;
 }
 
 bool gestion() {
