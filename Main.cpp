@@ -53,7 +53,8 @@ void registrarAlumno(){
         std::cout << "Ingrese un ano valido: " << std::endl;
         std::cin >> anoIngreso;
     }
-    alumno* persona = new alumno(id, nombre, apellido, carrera, diaIngreso, mesIngreso, anoIngreso);
+    alumno a(id, nombre, apellido, carrera, diaIngreso, mesIngreso, anoIngreso);
+    listaAlumnos.insertar(a);
     std::cout<<"El alumno ha sido registrado exitosamente."<<std::endl;
 }
 
@@ -172,6 +173,7 @@ bool gestionCursos(){
 }
 
 int main() {
+	ListaAlumnos listaAlumnos;
     bool menu = true;
     while (menu){
         imprimirMenu();
@@ -182,7 +184,7 @@ int main() {
        	 	std::cin >> opcion;
     	}
         if (opcion == 1){
-            menu = gestion();
+            menu = gestion(listaAlumnos);
         }
 		else if (opcion == 2){
             menu=gestionCursos();
