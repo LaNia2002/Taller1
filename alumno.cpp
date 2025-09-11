@@ -10,7 +10,6 @@ using namespace std;
         this -> diaIngreso = diaIngreso;
         this -> mesIngreso = mesIngreso;
         this -> anoIngreso = anoIngreso;
-        this -> sig = nullptr;
     }
         int alumno::getID() {return id;}
         string alumno::getNombre(){return nombre;}
