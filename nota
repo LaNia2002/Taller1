@@ -4,10 +4,10 @@ using namespace std;
 
 class nota {
   public:
-    int data; 
+    float data; 
     nota* sig; 
 
-    nota(int data) {
+    nota(float data) {
         this -> data = data;
         this -> sig = nullptr;
     }
