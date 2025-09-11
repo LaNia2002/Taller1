@@ -1,6 +1,9 @@
 #include <iostream>
 #include "alumno.h"
 #include "curso.h"
+#include "ListaAlumnos.h"
+#include "ListaCursos.h"
+
 
 void imprimirMenu(){
     std::cout << "Bienvenido al menu: principal." << std::endl;
@@ -64,7 +67,7 @@ void eliminarCurso(){
 void buscarCurso() {
 
 }
-void registrarCurso(){
+void registrarCurso(ListaCursos &listaCursos){
 
     std:: string codigo;
     std:: string nombre;
@@ -86,7 +89,9 @@ void registrarCurso(){
     std::cout<<"Ingrese el nombre del profesor del curso:" <<std::endl;
     std::cin>>profesor;
 
-    curso* clase = new curso(codigo, nombre, cantMax, carrera, profesor);
+    curso c(codigo, nombre, cantMax, carrera, profesor);
+    ListaCursos.insertar(c);
+	
     std::cout<<"El curso ha sido registrado exitosamente."<<std::endl;
     
 }
@@ -144,7 +149,7 @@ bool gestionCursos(){
     return true;
 }
 
-bool gestionCursos(){
+bool gestionCursos(ListaCursos &listaCursos){
     int opcion;
     std::cout << "Ingrese qué tipo de gestion quiere hacer: " << std::endl;
     std::cout << "1) Registro de curso: " << std::endl;
@@ -157,7 +162,7 @@ bool gestionCursos(){
         std::cin >> opcion;
     }
     if(opcion == 1){
-        registrarCurso();
+        registrarCurso(listaCursos);
     }
     else if (opcion == 2){
         buscarCurso();
@@ -174,6 +179,7 @@ bool gestionCursos(){
 
 int main() {
 	ListaAlumnos listaAlumnos;
+	ListaCursos listaCursos;
     bool menu = true;
     while (menu){
         imprimirMenu();
@@ -187,7 +193,7 @@ int main() {
             menu = gestion(listaAlumnos);
         }
 		else if (opcion == 2){
-            menu=gestionCursos();
+            menu=gestionCursos(listaCursos);
         }
         else if (opcion == 3){
             
