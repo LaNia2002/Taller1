@@ -15,9 +15,18 @@ void imprimirMenu(){
         std::cout << "5) Reportes" << std::endl;
 }
 
-void eliminarAlumno(){
+void eliminarAlumno(ListaAlumnos &listaAlumnos){
+	int idAlumno;
+    std::cout << "Ingrese el ID del alumno a inscribir: ";
+    std::cin >> idAlumno;
+
+    alumno* encontradoAlumno = listaAlumnos.buscarPorID(idAlumno);
+    if (encontradoAlumno == nullptr) {
+        std::cout << "El alumno no existe." << std::endl; }
     
-}
+    listaAlumnos.eliminarAlumno(idAlumno);
+    std::cout << "El alumno ha sido eliminado." << std::endl;}
+
 bool buscarPorID(ListaAlumnos &listaAlumnos) {
     int idAlumno;
 
@@ -104,9 +113,18 @@ void registrarAlumno(ListaAlumnos &listaAlumnos){
     std::cout<<"El alumno ha sido registrado exitosamente."<<std::endl;
 }
 
-void eliminarCurso(){
+void eliminarCurso(ListaCursos &listaCursos){
+	std::string codigoCurso;
+    std::cout << "Ingrese el codigo del curso a eliminar: ";
+    std::cin >> codigoCurso;
+
+    curso* encontradoCurso = listaCursos.buscarPorCodigo(codigoCurso);
+    if (encontradoCurso == nullptr) {
+        std::cout << "El curso no existe." << std::endl; }
     
-}
+    listaCursos.eliminarCurso(codigoCurso);
+    std::cout << "El curso ha sido eliminado." << std::endl;}
+
 bool buscarPorCodigo(ListaCursos &listaCursos) {
     std::string codigoCurso;
     std::cout << "Ingrese el codigo del curso a buscar: ";
@@ -220,7 +238,7 @@ bool gestionCursos(ListaCursos &listaCursos){
 
     } 
     else if (opcion == 3) {
-        eliminarCurso();
+        eliminarCurso(listaCursos);
 
     } else if (opcion == 4){
         return true;
