@@ -43,3 +43,21 @@ void ListaAlumnos::eliminarAlumno(int id) {
         anterior->sig = actual->sig;}
         
     delete actual;}
+
+void ListaAlumnos::mostrarAlumno(string nombreAlumno) {
+    NodoAlumno* actual = cabeza;
+    if (actual == nullptr) {
+        cout << "No hay alumnos registrados." << endl;
+        return;
+    }
+    while (actual != nullptr) {
+        if(actual->dato.getNombre() == nombreAlumno){
+            cout << "ID: " << actual->dato.getID()
+             << "  Nombre: " << actual->dato.getNombre()
+             << "  Apellido: " << actual->dato.getApellido()
+             << "  Carrera: " << actual->dato.getCarrera()
+             << "  Fecha de Ingreso: " << actual->dato.getDiaIngreso() << "/" 
+             << actual->dato.getMesIngreso() << "/" 
+             << actual->dato.getAnoIngreso() << endl;}
+        actual = actual->sig;
+    }}
