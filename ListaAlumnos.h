@@ -1,3 +1,4 @@
+#pragma once
 #include "alumno.h"
 #include <iostream>
 using namespace std;
@@ -17,5 +18,6 @@ private:
 
 public:
     ListaAlumnos();
-    void insertar(alumno a);          
+    void insertar(alumno a);
+    alumno* buscarPorID(int id); 
 };
