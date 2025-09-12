@@ -7,8 +7,6 @@ class nota {
     float data; 
     nota* sig; 
 
-    nota(float data) {
-        this -> data = data;
-        this -> sig = nullptr;
-    }
+    nota(float data);
+    float getNota();
 };
