@@ -15,4 +15,5 @@ using namespace std;
         int curso::getCantMax(){return cantMax;}
         string curso::getCarrera(){return carrera;}
         string curso::getProfesor(){return profesor;}
+        ListaAlumnos& curso::getAlumnosInscritos() {return alumnosInscritos;}
             
