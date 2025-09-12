@@ -43,3 +43,20 @@ void ListaCursos::eliminarCurso(string codigo) {
         anterior->sig = actual->sig;}
         
     delete actual;}
+
+void ListaCursos::mostrar(string nombreCurso) {
+    NodoCursos* actual = cabeza;
+    if (actual == nullptr) {
+        cout << "No hay cursos registrados." << endl;
+        return;
+    }
+    while (actual != nullptr) {
+        if(actual->dato.getNombre() == nombreCurso){
+            cout << "Codigo: " << actual->dato.getCodigo()
+             << "  Nombre: " << actual->dato.getNombre()
+             << "  Cupo: " << actual->dato.getCantMax()
+             << "  Carrera: " << actual->dato.getCarrera()
+             << "  Profesor: " << actual->dato.getProfesor()<< endl;}
+        actual = actual->sig;}}
+
+
