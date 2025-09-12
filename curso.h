@@ -10,6 +10,7 @@ class curso{
         int cantMax;
         string carrera;
         string profesor;
+        ListaAlumnos alumnosInscritos;
 
         
     public:
@@ -19,5 +20,6 @@ class curso{
         int getCantMax();
         string getCarrera();
         string getProfesor();
+        ListaAlumnos& getAlumnosInscritos();
         ~curso(){};;
 };
