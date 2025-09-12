@@ -1,4 +1,4 @@
-#include "ListaNotas.h"
+#include "listaNotas.h"
 #include <iostream>
 using namespace std;
 
@@ -9,6 +9,8 @@ NodoNotas::NodoNotas(nota dato):
 
 NodoNotas::~NodoNotas() {}
 
+nota NodoNotas::getNodo(){return dato;}
+
 ListaNotas::ListaNotas() {
     cabeza = nullptr;
 }
@@ -18,3 +20,4 @@ void ListaNotas::insertar(nota dato) {
     nuevo->sig = cabeza;
     cabeza = nuevo;
 }
+NodoNotas ListaNotas::getDato(){return *cabeza;}
