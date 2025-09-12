@@ -26,5 +26,20 @@ void ListaAlumnos::insertar(alumno a) {
         }
         actual = actual->sig;
     }
-    return nullptr;
-}
+    return nullptr;}
+
+void ListaAlumnos::eliminarAlumno(int id) {
+    NodoAlumno* actual = cabeza;
+    NodoAlumno* anterior = nullptr;
+
+    while (actual != nullptr && actual->dato.getID() != id) {
+        anterior = actual;
+        actual = actual->sig;}
+
+    if (actual == nullptr) return; 
+    if (anterior == nullptr) {
+        cabeza = actual->sig;}
+         else {
+        anterior->sig = actual->sig;}
+        
+    delete actual;}
