@@ -19,5 +19,6 @@ private:
 public:
     ListaAlumnos();
     void insertar(alumno a);
-    alumno* buscarPorID(int id); 
+    alumno* buscarPorID(int id);
+    void eliminarAlumno(int id);
 };
