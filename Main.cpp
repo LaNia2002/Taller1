@@ -7,16 +7,19 @@
 
 void imprimirMenu(){
     std::cout << "Bienvenido al menu: principal." << std::endl;
+	    std::cout << "-----------------------------------" << std::endl;
 	    std::cout << "Ingrese la accion que quiere ejecutar: " << std::endl;
 	    std::cout << "1) Gestion de alumnos" << std::endl;
         std::cout << "2) Gestion de cursos" << std::endl;
         std::cout << "3) Inscripcion de alumnos" << std::endl;
         std::cout << "4) Gestion de notas" << std::endl;
         std::cout << "5) Reportes" << std::endl;
+	    std::cout << "-----------------------------------" << std::endl;
 }
 
 void eliminarAlumno(ListaAlumnos &listaAlumnos){
 	int idAlumno;
+	std::cout << "-----------------------------------" << std::endl;
     std::cout << "Ingrese el ID del alumno a inscribir: ";
     std::cin >> idAlumno;
 
@@ -30,6 +33,7 @@ void eliminarAlumno(ListaAlumnos &listaAlumnos){
 bool buscarPorID(ListaAlumnos &listaAlumnos) {
     int idAlumno;
 
+	std::cout << "-----------------------------------" << std::endl;
     std::cout << "Ingrese el ID del alumno a inscribir: ";
     std::cin >> idAlumno;
 
@@ -43,14 +47,19 @@ bool buscarPorID(ListaAlumnos &listaAlumnos) {
           << encontradoAlumno->getDiaIngreso() << "/"
           << encontradoAlumno->getMesIngreso() << "/"
           << encontradoAlumno->getAnoIngreso()<< std::endl;
-    return true;
-}
+    return true;}
 
 bool buscarPorNombre(ListaAlumnos &listaAlumnos) {
+	std::cout << "-----------------------------------" << std::endl;
+    std::string nombreAlumno;
+    std::cout << "Ingrese el nombre del alumno a buscar: ";
+    std::cin >> nombreAlumno;
+    listaAlumnos.mostrarAlumno(nombreAlumno);
+    return true;}
 
-}
 void buscarAlumno(ListaAlumnos &listaAlumnos) {
 
+	std::cout << "-----------------------------------" << std::endl;
     std::cout << "Ingrese segun que aspecto quiere buscar: " << std::endl;
     std::cout << "1) ID: " << std::endl;
     std::cout << "2) Nombre: " << std::endl;
@@ -141,10 +150,18 @@ bool buscarPorCodigo(ListaCursos &listaCursos) {
           << ", Profesor: " << encontradoCurso->getProfesor() << std::endl;
     return true;
 }
-bool buscarPorNomCurso(ListaCursos &listaCursos) {}
+bool buscarPorNomCurso(ListaCursos &listaCursos) {
+	std::cout << "-----------------------------------" << std::endl;
+    std::string nombreCurso;
+    std::cout << "Ingrese el nombre del curso a buscar: ";
+    std::cin >> nombreCurso;
+    listaCursos.mostrar(nombreCurso);
+    return true;
+}
 void buscarCurso( ListaCursos &listaCursos) {
-
-     std::cout << "Ingrese segun que aspecto quiere buscar: " << std::endl;
+	
+    std::cout << "-----------------------------------" << std::endl;
+    std::cout << "Ingrese segun que aspecto quiere buscar: " << std::endl;
     std::cout << "1) Codigo del curso: " << std::endl;
     std::cout << "2) Nombre del curso: " << std::endl;
     std::cout << "3) volvel al menu: " << std::endl;
@@ -165,7 +182,7 @@ void buscarCurso( ListaCursos &listaCursos) {
         else {
             std::cout << "Ingrese un numero valido: " << std::endl;
         }}}
-void registrarCurso(ListaCursos &listaCursos){
+void registrarCurso(ListaCursos &ListaCursos){
 
     std:: string codigo;
     std:: string nombre;
@@ -173,6 +190,7 @@ void registrarCurso(ListaCursos &listaCursos){
     std:: string carrera;
     std:: string profesor;
 
+	std::cout << "-----------------------------------" << std::endl;
     std::cout <<"Ingrese el codigo del curso:" << std::endl;
     std::cin >>codigo;
     std::cout<<" Ingrese el nombre del curso:" <<std::endl;
@@ -195,6 +213,7 @@ void registrarCurso(ListaCursos &listaCursos){
 
 bool gestion(ListaAlumnos &listaAlumnos) {
     int opcion;
+	std::cout << "-----------------------------------" << std::endl;
     std::cout << "Ingrese qué tipo de gestion quiere hacer: " << std::endl;
     std::cout << "1) Registro de alumno: " << std::endl;
     std::cout << "2) Buscar un alumno: " << std::endl;
@@ -220,6 +239,8 @@ bool gestion(ListaAlumnos &listaAlumnos) {
 
 bool gestionCursos(ListaCursos &listaCursos){
     int opcion;
+	
+	std::cout << "-----------------------------------" << std::endl;
     std::cout << "Ingrese qué tipo de gestion quiere hacer: " << std::endl;
     std::cout << "1) Registro de curso: " << std::endl;
     std::cout << "2) Buscar un curso: " << std::endl;
@@ -231,24 +252,20 @@ bool gestionCursos(ListaCursos &listaCursos){
         std::cin >> opcion;
     }
     if(opcion == 1){
-        registrarCurso(listaCursos);
-    }
+        registrarCurso(listaCursos);}
     else if (opcion == 2){
-        buscarCurso(listaCursos);
-
-    } 
+        buscarCurso(listaCursos);} 
     else if (opcion == 3) {
-        eliminarCurso(listaCursos);
-
-    } else if (opcion == 4){
-        return true;
-    }
+        eliminarCurso(listaCursos);}
+	else if (opcion == 4){
+        return true;}
     return true;
 }
 void inscribirAlumno(ListaAlumnos &listaAlumnos, ListaCursos &listaCursos) {
     int idAlumno;
     std::string codigoCurso;
 
+	std::cout << "-----------------------------------" << std::endl;
     std::cout << "Ingrese el ID del alumno a inscribir: ";
     std::cin >> idAlumno;
     std::cout << "Ingrese el codigo del curso: ";
@@ -268,10 +285,34 @@ void inscribirAlumno(ListaAlumnos &listaAlumnos, ListaCursos &listaCursos) {
     encontradoCurso->getAlumnosInscritos().insertar(*encontradoAlumno);
     std::cout << "El alumno se ha inscrito al curso." << std::endl;
 }
-void eliminarInscripcionAlumno(ListaAlumnos &listaAlumnos, ListaCursos &listaCursos){   
-}
+void eliminarInscripcionAlumno(ListaAlumnos &listaAlumnos, ListaCursos &listaCursos){
+	 int idAlumno;
+    std::string codigoCurso;
+    
+    std::cout << "-----------------------------------" << std::endl;
+    std::cout << "Ingrese el ID del alumno a eliminar: ";
+    std::cin >> idAlumno;
+    std::cout << "Ingrese el codigo del curso: ";
+    std::cin >> codigoCurso;
+
+    alumno* encontradoAlumno = listaAlumnos.buscarPorID(idAlumno);
+    if (encontradoAlumno == nullptr) {
+        std::cout << "El alumno no existe." << std::endl; return;}
+
+    curso* encontradoCurso = listaCursos.buscarPorCodigo(codigoCurso);
+    if (encontradoCurso == nullptr) {
+        std::cout << "El curso no existe." << std::endl;return;}
+
+    if (encontradoAlumno->getCarrera() != encontradoCurso->getCarrera()) {
+        std::cout << "El alumno no pertenece a la carrera del curso." << std::endl;return;}
+
+    encontradoCurso->getAlumnosInscritos().eliminarAlumno(idAlumno);
+    std::cout << "El alumno se ha eliminado del curso." << std::endl;}
+
 bool gestionInscribirAlumno(ListaAlumnos &listaAlumnos, ListaCursos &listaCursos){
     int opcion;
+	
+	std::cout << "-----------------------------------" << std::endl;    
     std::cout << "Ingrese qué tipo de gestion quiere hacer: " << std::endl;
     std::cout << "1) Inscribir un alumno a un curso: " << std::endl;
     std::cout << "2) Eliminar un alumno de un curso: " << std::endl;
