@@ -21,4 +21,5 @@ public:
     void insertar(alumno a);
     alumno* buscarPorID(int id);
     void eliminarAlumno(int id);
+    void mostrarAlumno(std::string nombreAlumno);
 };
