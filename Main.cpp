@@ -96,7 +96,7 @@ void registrarCurso(ListaCursos &listaCursos){
     
 }
 
-bool gestion() {
+bool gestion(ListaAlumnos &listaAlumnos) {
     int opcion;
     std::cout << "Ingrese qué tipo de gestion quiere hacer: " << std::endl;
     std::cout << "1) Registro de alumno: " << std::endl;
@@ -115,34 +115,6 @@ bool gestion() {
         buscarAlumno();
     } else if (opcion == 3) {
         eliminarAlumno();
-    } else if (opcion == 4){
-        return true;
-    }
-    return true;
-}
-
-bool gestionCursos(){
-    int opcion;
-    std::cout << "Ingrese qué tipo de gestion quiere hacer: " << std::endl;
-    std::cout << "1) Registro de curso: " << std::endl;
-    std::cout << "2) Buscar un curso: " << std::endl;
-    std::cout << "3) Eliminar un curso: " << std::endl;
-    std::cout << "4) Volver al menú: " << std::endl;
-    std::cin >> opcion;
-    while (opcion > 4 || opcion < 1){
-        std::cout << "Ingrese un numero valido: " << std::endl;
-        std::cin >> opcion;
-    }
-    if(opcion == 1){
-        registrarCurso();
-    }
-    else if (opcion == 2){
-        buscarCurso();
-
-    } 
-    else if (opcion == 3) {
-        eliminarCurso();
-
     } else if (opcion == 4){
         return true;
     }
