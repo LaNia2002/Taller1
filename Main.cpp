@@ -18,10 +18,53 @@ void imprimirMenu(){
 void eliminarAlumno(){
     
 }
-void buscarAlumno() {
+bool buscarPorID(ListaAlumnos &listaAlumnos) {
+    int idAlumno;
+
+    std::cout << "Ingrese el ID del alumno a inscribir: ";
+    std::cin >> idAlumno;
+
+    alumno* encontradoAlumno = listaAlumnos.buscarPorID(idAlumno);
+    if (encontradoAlumno == nullptr) {
+        std::cout << "El alumno no existe." << std::endl; return true;}
     
+    std::cout << "Nombre: " << encontradoAlumno->getNombre()<< ", Apellido: " << encontradoAlumno->getApellido()
+          << ", Carrera: " << encontradoAlumno->getCarrera()
+          << ", Fecha de ingreso: "
+          << encontradoAlumno->getDiaIngreso() << "/"
+          << encontradoAlumno->getMesIngreso() << "/"
+          << encontradoAlumno->getAnoIngreso()<< std::endl;
+    return true;
 }
-void registrarAlumno(){
+
+bool buscarPorNombre(ListaAlumnos &listaAlumnos) {
+
+}
+void buscarAlumno(ListaAlumnos &listaAlumnos) {
+
+    std::cout << "Ingrese segun que aspecto quiere buscar: " << std::endl;
+    std::cout << "1) ID: " << std::endl;
+    std::cout << "2) Nombre: " << std::endl;
+    std::cout << "3) volvel al menu: " << std::endl;
+    int opcion;
+    bool valido = false;
+    std::cin >> opcion;
+
+    while(valido==false){
+        if (opcion == 1){
+            valido=buscarPorID(listaAlumnos);
+        }
+        else if (opcion == 2){
+            valido=buscarPorNombre(listaAlumnos);
+        }
+        else if (opcion == 3){
+            valido=true;
+        }
+        else {
+            std::cout << "Ingrese un numero valido: " << std::endl;
+        }}}
+
+void registrarAlumno(ListaAlumnos &listaAlumnos){
 	int id;
     std:: string nombre;
     std:: string apellido;
@@ -64,9 +107,46 @@ void registrarAlumno(){
 void eliminarCurso(){
     
 }
-void buscarCurso() {
+bool buscarPorCodigo(ListaCursos &listaCursos) {
+    std::string codigoCurso;
+    std::cout << "Ingrese el codigo del curso a buscar: ";
+    std::cin >> codigoCurso;
 
+    curso* encontradoCurso = listaCursos.buscarPorCodigo(codigoCurso);
+    if (encontradoCurso == nullptr) {
+        std::cout << "El curso no existe." << std::endl;
+        return true;}
+    
+    std::cout << "Codigo: " << encontradoCurso->getCodigo() << ", Nombre: " << encontradoCurso->getNombre()
+          << ", Cantidad Maxima de Estudiantes: " << encontradoCurso->getCantMax()
+          << ", Carrera: " << encontradoCurso->getCarrera()
+          << ", Profesor: " << encontradoCurso->getProfesor() << std::endl;
+    return true;
 }
+bool buscarPorNomCurso(ListaCursos &listaCursos) {}
+void buscarCurso( ListaCursos &listaCursos) {
+
+     std::cout << "Ingrese segun que aspecto quiere buscar: " << std::endl;
+    std::cout << "1) Codigo del curso: " << std::endl;
+    std::cout << "2) Nombre del curso: " << std::endl;
+    std::cout << "3) volvel al menu: " << std::endl;
+    int opcion;
+    bool valido = false;
+    std::cin >> opcion;
+
+    while(valido==false){
+        if (opcion == 1){
+            valido=buscarPorCodigo(listaCursos);
+        }
+        else if (opcion == 2){
+            valido=buscarPorNomCurso(listaCursos);
+        }
+        else if (opcion == 3){
+            valido=true;
+        }
+        else {
+            std::cout << "Ingrese un numero valido: " << std::endl;
+        }}}
 void registrarCurso(ListaCursos &listaCursos){
 
     std:: string codigo;
@@ -91,7 +171,6 @@ void registrarCurso(ListaCursos &listaCursos){
 
     curso c(codigo, nombre, cantMax, carrera, profesor);
     ListaCursos.insertar(c);
-	
     std::cout<<"El curso ha sido registrado exitosamente."<<std::endl;
     
 }
@@ -109,12 +188,12 @@ bool gestion(ListaAlumnos &listaAlumnos) {
         std::cin >> opcion;
     }
     if(opcion == 1){
-        registrarAlumno();
+        registrarAlumno(listaAlumnos);
     }
     else if (opcion == 2){
-        buscarAlumno();
+        buscarAlumno(listaAlumnos);
     } else if (opcion == 3) {
-        eliminarAlumno();
+        eliminarAlumno(listaAlumnos);
     } else if (opcion == 4){
         return true;
     }
@@ -137,7 +216,7 @@ bool gestionCursos(ListaCursos &listaCursos){
         registrarCurso(listaCursos);
     }
     else if (opcion == 2){
-        buscarCurso();
+        buscarCurso(listaCursos);
 
     } 
     else if (opcion == 3) {
