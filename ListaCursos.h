@@ -17,5 +17,6 @@ private:
 
 public:
     ListaCursos();
-    void insertar(curso dato);          
+    void insertar(curso dato);
+    curso* buscarPorCodigo(std::string codigo);   
 };
