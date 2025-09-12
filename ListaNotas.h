@@ -6,9 +6,9 @@ class NodoNotas {
 public:
     nota dato;
     NodoNotas* sig;
-
-    NodoNotas(nota dato);   
-    ~NodoNotas();         
+    NodoNotas(nota dato);
+    ~NodoNotas(); 
+    nota getNodo();   
 };
 
 class ListaNotas {
@@ -17,5 +17,6 @@ private:
 
 public:
     ListaNotas();
+    NodoNotas getDato();
     void insertar(nota dato);          
 };
