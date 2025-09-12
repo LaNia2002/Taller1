@@ -148,6 +148,53 @@ bool gestionCursos(ListaCursos &listaCursos){
     }
     return true;
 }
+void inscribirAlumno(ListaAlumnos &listaAlumnos, ListaCursos &listaCursos) {
+    int idAlumno;
+    std::string codigoCurso;
+
+    std::cout << "Ingrese el ID del alumno a inscribir: ";
+    std::cin >> idAlumno;
+    std::cout << "Ingrese el codigo del curso: ";
+    std::cin >> codigoCurso;
+
+    alumno* encontradoAlumno = listaAlumnos.buscarPorID(idAlumno);
+    if (encontradoAlumno == nullptr) {
+        std::cout << "El alumno no existe." << std::endl; return;}
+
+    curso* encontradoCurso = listaCursos.buscarPorCodigo(codigoCurso);
+    if (encontradoCurso == nullptr) {
+        std::cout << "El curso no existe." << std::endl;return;}
+
+    if (encontradoAlumno->getCarrera() != encontradoCurso->getCarrera()) {
+        std::cout << "El alumno no pertenece a la carrera del curso." << std::endl;return;}
+
+    encontradoCurso->getAlumnosInscritos().insertar(*encontradoAlumno);
+    std::cout << "El alumno se ha inscrito al curso." << std::endl;
+}
+void eliminarInscripcionAlumno(ListaAlumnos &listaAlumnos, ListaCursos &listaCursos){   
+}
+bool gestionInscribirAlumno(ListaAlumnos &listaAlumnos, ListaCursos &listaCursos){
+    int opcion;
+    std::cout << "Ingrese qué tipo de gestion quiere hacer: " << std::endl;
+    std::cout << "1) Inscribir un alumno a un curso: " << std::endl;
+    std::cout << "2) Eliminar un alumno de un curso: " << std::endl;
+    std::cout << "3) Volver al menú: " << std::endl;
+    std::cin >> opcion;
+    while (opcion > 3 || opcion < 1){
+        std::cout << "Ingrese un numero valido: " << std::endl;
+        std::cin >> opcion;
+    }
+    if(opcion == 1){
+        inscribirAlumno(listaAlumnos, listaCursos);
+    }
+    else if (opcion == 2){
+        eliminarInscripcionAlumno(listaAlumnos, listaCursos);
+    }
+    else if (opcion == 3) {
+        return true;
+    }
+    return true;
+}
 
 int main() {
 	ListaAlumnos listaAlumnos;
@@ -168,7 +215,7 @@ int main() {
             menu=gestionCursos(listaCursos);
         }
         else if (opcion == 3){
-            
+			menu=gestionInscribirAlumno(listaAlumnos, listaCursos);
         }
         else if (opcion == 4){
             
