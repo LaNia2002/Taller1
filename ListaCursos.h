@@ -1,3 +1,4 @@
+#pragma once
 #include "curso.h"
 #include <iostream>
 using namespace std;
