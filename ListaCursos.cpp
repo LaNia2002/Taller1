@@ -26,5 +26,20 @@ void ListaCursos::insertar(curso dato) {
         }
         actual = actual->sig;
     }
-    return nullptr;
-}
+    return nullptr;}
+
+void ListaCursos::eliminarCurso(string codigo) {
+    NodoCursos* actual = cabeza;
+    NodoCursos* anterior = nullptr;
+
+    while (actual != nullptr && actual->dato.getCodigo() != codigo) {
+        anterior = actual;
+        actual = actual->sig;}
+
+    if (actual == nullptr) return;
+    if (anterior == nullptr) {
+        cabeza = actual->sig;}
+         else {
+        anterior->sig = actual->sig;}
+        
+    delete actual;}
