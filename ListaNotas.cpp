@@ -1,0 +1,20 @@
+#include "ListaNotas.h"
+#include <iostream>
+using namespace std;
+
+NodoNotas::NodoNotas(nota dato):
+ dato(dato) {
+    sig = nullptr;
+}
+
+NodoNotas::~NodoNotas() {}
+
+ListaNotas::ListaNotas() {
+    cabeza = nullptr;
+}
+
+void ListaNotas::insertar(nota dato) {
+    NodoNotas* nuevo = new NodoNotas(dato);
+    nuevo->sig = cabeza;
+    cabeza = nuevo;
+}
