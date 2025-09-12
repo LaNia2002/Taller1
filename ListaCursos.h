@@ -21,4 +21,5 @@ public:
     void insertar(curso dato);
     curso* buscarPorCodigo(std::string codigo);
     void eliminarCurso(std::string codigo);
+    void mostrar(std::string nombreCurso); 
 };
