@@ -19,5 +19,6 @@ using namespace std;
         int alumno::getDiaIngreso(){return diaIngreso;}
         int alumno::getMesIngreso(){return mesIngreso;}
         int alumno::getAnoIngreso(){return anoIngreso;}
+        ListaNotas& alumno::getNotasAlumno() {return listaDeNotas;}
             
 
