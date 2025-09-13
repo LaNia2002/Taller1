@@ -403,7 +403,7 @@ void alumnosEnCarrera(ListaAlumnos alumnos) {
     std::cout << "" << std::endl;
 }
 
-void cursosDeAlumno(){
+void cursosDeAlumno(ListaCursos cursos, ListaAlumnos alumnos){
 	int idBuscando;
     std::cout << "Ingrese el alumno a buscar (id): ";
     std::cin >> idBuscando;
