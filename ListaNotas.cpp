@@ -1,4 +1,4 @@
-#include "listaNotas.h"
+#include "ListaNotas.h"
 #include <iostream>
 using namespace std;
 
