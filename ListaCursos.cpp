@@ -58,5 +58,5 @@ void ListaCursos::mostrar(string nombreCurso) {
              << "  Carrera: " << actual->dato.getCarrera()
              << "  Profesor: " << actual->dato.getProfesor()<< endl;}
         actual = actual->sig;}}
-
+NodoCursos* ListaCursos::retornarCabeza(){return cabeza;}
 
