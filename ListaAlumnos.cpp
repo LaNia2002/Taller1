@@ -61,3 +61,5 @@ void ListaAlumnos::mostrarAlumno(string nombreAlumno) {
              << actual->dato.getAnoIngreso() << endl;}
         actual = actual->sig;
     }}
+NodoAlumno* ListaAlumnos::retornarCabeza(){
+    return cabeza;}
