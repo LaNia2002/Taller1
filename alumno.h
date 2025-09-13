@@ -12,6 +12,7 @@ class alumno{
         int diaIngreso;
         int mesIngreso;
         int anoIngreso;
+        ListaNotas listaDeNotas;
         
     public:
         alumno(int, string, string,string, int, int, int);
