@@ -1,6 +1,7 @@
 using namespace std;
 #include <iostream>
 #include <string.h>
+#include "ListaAlumnos.h"
 #pragma once
 
 class curso{
