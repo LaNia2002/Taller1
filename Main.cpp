@@ -334,6 +334,113 @@ bool gestionInscribirAlumno(ListaAlumnos &listaAlumnos, ListaCursos &listaCursos
     return true;
 }
 
+bool gestionDeNotas(ListaAlumnos alumnos, ListaCursos cursos){
+    int opcion = 1;
+    string codigo;
+    int id;
+    float calificacion;
+    std::cout << "Ingrese el código del curso a la cual agregar la nota: ";
+    std::cin >> codigo;
+    std::cout << "Ingrese el id del alumno en el curso: ";
+    std::cin >> id;
+    curso* encontradoCurso = cursos.buscarPorCodigo(codigo);
+    while (encontradoCurso == nullptr) {
+        std::cout << "El curso no existe. Intente con otro codigo: ";
+        std::cin >> codigo;
+        encontradoCurso = cursos.buscarPorCodigo(codigo);
+    }
+    alumno* encontradoAlumno = alumnos.buscarPorID(id);
+    while (encontradoAlumno == nullptr) {
+        std::cout << "El alumno no existe. Intente con otro id: ";
+        std::cin >> id;
+        encontradoAlumno = alumnos.buscarPorID(id);
+    }
+    while (encontradoAlumno -> getCarrera() != encontradoCurso -> getCarrera() || id == 0) {
+        std::cout << "El alumno no pertenece a la carrera del curso. Intente con otro id de alumno o escriba '0' para salir: ";
+        std::cin >> id;
+        if (id == 0){
+            return true;}
+        encontradoAlumno = alumnos.buscarPorID(id);
+    }
+    while(opcion == 1){
+        std::cout << "Ingrese la nota a ingresar: ";
+        std::cin >> calificacion;
+        while (calificacion > 7.0 || calificacion < 1.0){
+            std::cout << "Ingrese una nota válida (desde 1.0 a 7.0): ";
+            std::cin >> calificacion;
+        }
+        nota A(calificacion);
+        encontradoCurso->getAlumnosInscritos().buscarPorID(id) -> getNotasAlumno().insertar(A);
+        std::cout << "Se ha registrado la nota con éxito." << std::endl;
+        std::cout << "¿Desea agregar otra nota para este alumno? (1 si , 0 si no)";
+        std:cin >> opcion;
+    }
+    return true;
+}
+
+void alumnosEnCarrera(ListaAlumnos alumnos) {
+    std::string carreraActual;
+    std::string carreraBuscando;
+    std::cout << "Ingrese la carrera a buscar: ";
+    std::cin >> carreraBuscando;
+    std::cout << "Buscando todos los alumnos en " << carreraBuscando << std::endl;
+    NodoAlumno* actual = alumnos.retornarCabeza();
+    if (actual == nullptr){
+        std::cout << "No se encontro ningun alumno en esta carrera. ";
+    }
+    while (actual != nullptr) {
+        carreraActual = actual -> dato.getCarrera();
+        alumno alumnoActual = actual -> dato;
+        if (carreraBuscando == carreraActual){
+            std::cout << "Nombre: " << alumnoActual.getNombre()<< ", Apellido: " << alumnoActual.getApellido()
+          << ", Carrera: " << alumnoActual.getCarrera() << ", Fecha de ingreso: "
+          << alumnoActual.getDiaIngreso() << "/" << alumnoActual.getMesIngreso() << "/"
+          << alumnoActual.getAnoIngreso()<< std::endl;
+        }
+        actual = actual->sig;
+    }
+    std::cout << "Volviendo al menu principal." << std::endl;
+    std::cout << "" << std::endl;
+}
+
+void cursosDeAlumno(){
+
+}
+
+void promedioDeAlumno(){
+
+}
+
+void promedioGeneral(){
+}
+
+bool consultas(ListaAlumnos alumnos, ListaCursos cursos){
+    int opcion;
+    std::cout << "¿Qué es lo que desea consultar?" << std::endl;
+    std::cout << "1) Todos los alumnos en una carrera." << std::endl;
+    std::cout << "2) Todos los cursos en que un alumno está inscrito." << std::endl;
+    std::cout << "3) El promedio de notas de un alumno en un curso." << std::endl;
+    std::cout << "4) El promedio general de un alumno." << std::endl;
+    std::cout << "5) Volver al menu principal." << std::endl;
+    std::cin >> opcion;
+    while (opcion < 1 || opcion > 5){
+        std::cout << "Ingrese una opcion valida.";
+        std::cin >> opcion;
+    }
+    if (opcion == 1){
+        alumnosEnCarrera(alumnos);
+    } else if (opcion == 2) {
+        cursosDeAlumno();
+    } else if (opcion == 3) {
+        promedioDeAlumno();
+    } else if (opcion == 4) {
+        promedioGeneral();
+    } else if (opcion == 5) {
+        return true;
+    }
+    return true;
+}
+
 int main() {
 	ListaAlumnos listaAlumnos;
 	ListaCursos listaCursos;
@@ -356,10 +463,10 @@ int main() {
 			menu=gestionInscribirAlumno(listaAlumnos, listaCursos);
         }
         else if (opcion == 4){
-            
+            menu = gestionDeNotas(listaAlumnos, listaCursos);
         }
         else if (opcion == 5){
-            
+            menu = consultas(listaAlumnos, listaCursos);
         }
     }
 	return 0;
