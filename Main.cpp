@@ -487,6 +487,59 @@ void promedioDeAlumno(ListaCursos &cursos){
 }
 
 void promedioGeneral(){
+	int idBuscando;
+    float promedioGen = 0;
+    int contadorGen = 0;
+    std::cout << "Ingrese el alumno para calcular su promedio general (id): ";
+    std::cin >> idBuscando;
+    NodoAlumno* buscando = alumnos.retornarCabeza();
+    
+    if (buscando == nullptr){
+        std::cout << "No existe ningún alumno inscrito.";
+        return;
+    }
+    while (buscando != nullptr){
+        if (buscando -> dato.getID() == idBuscando){
+            std::cout << "Se ha verificado la existencia del alumno con el id " << idBuscando << std::endl;
+            break;
+        }
+        buscando = buscando -> sig;
+        if (buscando == nullptr){
+        std::cout << "Este id no pertenece a ningun alumno. Intente con otro: ";
+        std::cin >> idBuscando;
+        NodoAlumno* buscando = alumnos.retornarCabeza();
+        }
+    }
+    std::cout << "Buscando todos los cursos en que está " << buscando -> dato.getNombre() << std::endl;
+    NodoCursos* actual = cursos.retornarCabeza();
+    if (actual == nullptr){
+        std::cout << "No se encontro ningun curso ingresado. Ingrese uno e intente de nuevo. ";
+    }
+    while (actual != nullptr) {
+        NodoAlumno* cursoLista = actual -> dato.getAlumnosInscritos().retornarCabeza();
+        while (cursoLista != nullptr){
+            if (cursoLista -> dato.getID() == idBuscando){
+                ListaNotas listaDeNotas = cursoLista -> dato.getNotasAlumno();
+                float sumaNotas = 0;
+                int contadorNotas = 0;
+                NodoNotas* actual = listaDeNotas.getDato();
+                if (actual == nullptr){
+                    std::cout << "No hay notas de este alumno en este curso aun." << std::endl;
+                }
+                while (actual != nullptr) {
+                    sumaNotas = sumaNotas + actual -> dato.getNota();
+                    contadorNotas = contadorNotas + 1;
+                    actual = actual -> sig;
+            }
+            std::cout << "El promedio del alumno en este curso es: " << sumaNotas/contadorNotas << std::endl;
+            }
+            cursoLista = cursoLista -> sig;
+        }
+            
+        actual = actual -> sig;
+    }
+    std::cout << "Volviendo al menu principal." << std::endl;
+    std::cout << "" << std::endl;
 }
 
 bool consultas(ListaAlumnos &alumnos, ListaCursos &cursos){
