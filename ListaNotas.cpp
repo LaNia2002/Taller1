@@ -20,4 +20,4 @@ void ListaNotas::insertar(nota dato) {
     nuevo->sig = cabeza;
     cabeza = nuevo;
 }
-NodoNotas ListaNotas::getDato(){return *cabeza;}
+NodoNotas* ListaNotas::getDato(){return cabeza;}
