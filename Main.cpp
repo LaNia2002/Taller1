@@ -486,7 +486,7 @@ void promedioDeAlumno(ListaCursos &cursos){
             return;
 }
 
-void promedioGeneral(){
+void promedioGeneral(ListaCursos &cursos, ListaAlumnos &alumnos){
 	int idBuscando;
     float promedioGen = 0;
     int contadorGen = 0;
@@ -562,7 +562,7 @@ bool consultas(ListaAlumnos &alumnos, ListaCursos &cursos){
     } else if (opcion == 3) {
         promedioDeAlumno(cursos);
     } else if (opcion == 4) {
-        promedioGeneral();
+        promedioGeneral(cursos, alumnos);
     } else if (opcion == 5) {
         return true;
     }
