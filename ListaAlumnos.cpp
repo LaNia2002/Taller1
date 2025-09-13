@@ -16,7 +16,7 @@ ListaAlumnos::ListaAlumnos() {
 void ListaAlumnos::insertar(alumno a) {
     NodoAlumno* nuevo = new NodoAlumno(a);
     nuevo->sig = cabeza;
-    cabeza = nuevo;
+    cabeza = nuevo;}
 
  alumno* ListaAlumnos::buscarPorID(int id) {
     NodoAlumno* actual = cabeza;
