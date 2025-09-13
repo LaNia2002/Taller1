@@ -16,7 +16,7 @@ ListaCursos::ListaCursos() {
 void ListaCursos::insertar(curso dato) {
     NodoCursos* nuevo = new NodoCursos(dato);
     nuevo->sig = cabeza;
-    cabeza = nuevo;
+    cabeza = nuevo;}
 
  curso* ListaCursos::buscarPorCodigo(std::string codigo) {
     NodoCursos* actual = cabeza;
