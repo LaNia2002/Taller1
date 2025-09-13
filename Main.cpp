@@ -334,7 +334,7 @@ bool gestionInscribirAlumno(ListaAlumnos &listaAlumnos, ListaCursos &listaCursos
     return true;
 }
 
-bool gestionDeNotas(ListaAlumnos alumnos, ListaCursos cursos){
+bool gestionDeNotas(ListaAlumnos &alumnos, ListaCursos &cursos){
     int opcion = 1;
     string codigo;
     int id;
@@ -378,7 +378,7 @@ bool gestionDeNotas(ListaAlumnos alumnos, ListaCursos cursos){
     return true;
 }
 
-void alumnosEnCarrera(ListaAlumnos alumnos) {
+void alumnosEnCarrera(ListaAlumnos &alumnos) {
     std::string carreraActual;
     std::string carreraBuscando;
     std::cout << "Ingrese la carrera a buscar: ";
@@ -403,7 +403,7 @@ void alumnosEnCarrera(ListaAlumnos alumnos) {
     std::cout << "" << std::endl;
 }
 
-void cursosDeAlumno(ListaCursos cursos, ListaAlumnos alumnos){
+void cursosDeAlumno(ListaCursos &cursos, ListaAlumnos &alumnos){
 	int idBuscando;
     std::cout << "Ingrese el alumno a buscar (id): ";
     std::cin >> idBuscando;
@@ -454,7 +454,7 @@ void promedioDeAlumno(){
 void promedioGeneral(){
 }
 
-bool consultas(ListaAlumnos alumnos, ListaCursos cursos){
+bool consultas(ListaAlumnos &alumnos, ListaCursos &cursos){
     int opcion;
     std::cout << "¿Qué es lo que desea consultar?" << std::endl;
     std::cout << "1) Todos los alumnos en una carrera." << std::endl;
