@@ -24,5 +24,6 @@ class alumno{
         int getDiaIngreso();
         int getMesIngreso();
         int getAnoIngreso();
+        ListaNotas& getNotasAlumno();
         ~alumno(){};;
 };
