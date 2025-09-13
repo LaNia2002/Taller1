@@ -373,7 +373,7 @@ bool gestionDeNotas(ListaAlumnos &alumnos, ListaCursos &cursos){
         encontradoCurso->getAlumnosInscritos().buscarPorID(id) -> getNotasAlumno().insertar(A);
         std::cout << "Se ha registrado la nota con éxito." << std::endl;
         std::cout << "¿Desea agregar otra nota para este alumno? (1 si , 0 si no)";
-        std:cin >> opcion;
+        std::cin >> opcion;
     }
     return true;
 }
@@ -447,8 +447,43 @@ void cursosDeAlumno(ListaCursos &cursos, ListaAlumnos &alumnos){
     std::cout << "" << std::endl;
 }
 
-void promedioDeAlumno(){
-
+void promedioDeAlumno(ListaCursos &cursos){
+    std::string cod;
+    std::cout << "Ingrese el codigo del curso a buscar: ";
+    std::cin >> cod;
+    curso* cursoAEncontrar = cursos.buscarPorCodigo(cod);
+    if (cursoAEncontrar == nullptr) {
+        std::cout << "El curso no existe." << std::endl;
+        std::cout << "Volviendo al menu principal." <<std::endl;
+        return;
+    }
+    ListaAlumnos alumnos = cursoAEncontrar -> getAlumnosInscritos();
+    int id;
+    std::cout << "Ingrese el id del alumno a buscar: ";
+    std::cin >> id;
+    alumno* encontradoAlumno = alumnos.buscarPorID(id);
+    if (encontradoAlumno == nullptr) {
+        std::cout << "El alumno no existe." << std::endl;
+        std::cout << "Volviendo al menu principal." << std::endl;
+        return;
+    }
+    ListaNotas listaDeNotas = encontradoAlumno -> getNotasAlumno();
+    float sumaNotas = 0;
+            int contadorNotas = 0;
+            NodoNotas* actual = listaDeNotas.getDato();
+            if (actual == nullptr){
+                std::cout << "No hay notas de este alumno en el curso aun." << std::endl;
+                std::cout << "Volviendo al menu principal." << std::endl;
+                return;
+            }
+            while (actual != nullptr) {
+                sumaNotas = sumaNotas + actual -> dato.getNota();
+                contadorNotas = contadorNotas + 1;
+                actual = actual -> sig;
+            }
+            std::cout << "El promedio del alumno en este curso es: " << sumaNotas/contadorNotas << std::endl;
+            std::cout << "Volviendo al menu principal." << std::endl;
+            return;
 }
 
 void promedioGeneral(){
@@ -472,7 +507,7 @@ bool consultas(ListaAlumnos &alumnos, ListaCursos &cursos){
     } else if (opcion == 2) {
         cursosDeAlumno(cursos, alumnos);
     } else if (opcion == 3) {
-        promedioDeAlumno();
+        promedioDeAlumno(cursos);
     } else if (opcion == 4) {
         promedioGeneral();
     } else if (opcion == 5) {
