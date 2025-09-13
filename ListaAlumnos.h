@@ -22,4 +22,5 @@ public:
     alumno* buscarPorID(int id);
     void eliminarAlumno(int id);
     void mostrarAlumno(std::string nombreAlumno);
+    NodoAlumno* retornarCabeza();
 };
