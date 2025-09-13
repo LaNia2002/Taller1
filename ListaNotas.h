@@ -18,6 +18,6 @@ private:
 
 public:
     ListaNotas();
-    NodoNotas getDato();
+    NodoNotas* getDato();
     void insertar(nota dato);          
 };
