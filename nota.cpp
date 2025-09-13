@@ -6,4 +6,4 @@ using namespace std;
 nota::nota(float data){
         this -> data = data;
     }
-float data::getNota() {return data;}
+float nota::getNota() {return data;}
