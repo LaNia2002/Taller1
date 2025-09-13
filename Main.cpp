@@ -470,7 +470,7 @@ bool consultas(ListaAlumnos alumnos, ListaCursos cursos){
     if (opcion == 1){
         alumnosEnCarrera(alumnos);
     } else if (opcion == 2) {
-        cursosDeAlumno();
+        cursosDeAlumno(cursos, alumnos);
     } else if (opcion == 3) {
         promedioDeAlumno();
     } else if (opcion == 4) {
